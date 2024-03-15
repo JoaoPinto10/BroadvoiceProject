@@ -1,0 +1,32 @@
+To clarify the requirements, I would ask the following questions:
+	Is there a specific format or validation requirements for the email address?
+	Is there a specific format or length requirement for the temporary password?
+	After the user receives the temporary password via email, is there a timeline in which they must change it?
+	Should there be any validation or error messages if the user tries to create an account with invalid input data (for example: invalid email format)?
+	Should there be any validation or error messages if the user tries to create an account with an email address that already exists in the database?
+
+These are some possible test cases based on the provided information:
+
+Test Case 1: Valid User Creation
+Description: Email should be valid (ex, "example@email.com"), valid first name (ex, "John") and valid last name (ex, "Doe"). Click save button. 
+Expected Result: User is created successfully, and the user receives an email with a temporary password they must change shortly. The user data is saved in the database.
+
+Test Case 2: Invalid Email Format
+Description: Invalid email notification (ex, "emailnotvalid").  Valid first name and last name and clicking save button.
+Expected Result: An Error message is displayed indicating that the email format is invalid. User is not created and the data is not saved in the database.
+
+Test Case 3: Invalid First Name Length
+Description: Valid email, invalid first name with fewer than 6 characters (ex, "John"), valid last name, and clicking save button.
+Expected Result: An Error message is displayed indicating that the first name must be between 6 and 30 characters. User is not created, and the information is not saved in the database.
+
+Test Case 4: Invalid Last Name Length
+Description: Valid email, valid first name, invalid last name with fewer than 6 characters (ex, "Doe”), and clicking save button.
+Expected Result: An Error message is displayed indicating that the last name must be between 6 and 30 characters. User is not created, and the information is not saved in the database.
+
+Test Case 5: Email already exists
+Description: Email that already exists in the database, valid first name, valid last name, clicking save button.
+Expected Result: An error message is displayed indicating that the email already exists. The user is not created, and no information is saved in the database.
+
+Test Case 6: User Creation Time Limit
+Description: Valid email, valid first name, valid last name, and click Save button.
+Expected Result: User is successfully created within 3 seconds. If the creation takes longer, an error message is displayed indicating that user creation took too long. No data is saved in the database.
